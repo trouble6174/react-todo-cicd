@@ -29,5 +29,4 @@ jobs:
         - run: chmod 600 ~/.ssh/github-action
         - run: echo -e "Host gauser\n\tUser gauser\n\tHostname 174.137.49.209\n\tPort 26392\n\tIdentityFile ~/.ssh/github-action\n\tStrictHostKeyChecking No" >> ~/.ssh/config
         - run: rsync -e ssh public gauser:~/static
-        - run: rsync -e ssh build/static/index.html gauser:~/static/index.html
-        - run: rsync -e ssh -a build/static/ gauser:~/static/
+        - run: rsync -e ssh -a build/ gauser:~/static/
