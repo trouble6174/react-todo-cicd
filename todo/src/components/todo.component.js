@@ -24,8 +24,8 @@ const CheckboxDiv = styled.div`
 
 const TodoContainer = styled.div`
   border: 1px solid black;
-  max-width: 25%;
-  min-width: 25%;
+  max-width: 20%;
+  min-width: 20%;
   min-height: 100%;
 `;
 
