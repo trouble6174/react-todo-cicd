@@ -2,6 +2,7 @@ import Todo from "./components/todo.component";
 import Timeline from "./components/timeline.component";
 import styled from "styled-components";
 import { css } from "styled-components";
+import { useEffect } from "react";
 
 const TodoContainer = styled.div`
   ${(props) => {
@@ -25,6 +26,9 @@ const TodoContainer = styled.div`
 `;
 
 function App() {
+  useEffect(() => {
+    document.title = "TODO";
+  }, []);
   return (
     // <TodoContainer $mode="dark">
     <TodoContainer>

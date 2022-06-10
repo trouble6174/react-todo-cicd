@@ -13,6 +13,8 @@ const TodoContainer = styled.div`
   max-width: 25%;
   min-width: 25%;
   min-height: 100%;
+  overflow-y: scroll;
+  height: 100vh;
 `;
 
 const TodoItems = styled.div`
@@ -53,7 +55,13 @@ function useStorageState(defaultValue, key) {
 
 function Timeline({ prefix, placeholder }) {
   const content = useRef("");
+  const scrollEnd = useRef();
   const [todoList, setTodoList] = useStorageState([], `${prefix || ""}tdl`);
+
+  useEffect(() => {
+    scrollEnd.current.scrollIntoView({ behavior: "smooth" });
+  }, [todoList]);
+
   const handleAddTodo = () => {
     if (!content.current.value) {
       return;
@@ -92,6 +100,7 @@ function Timeline({ prefix, placeholder }) {
             <div>{v.content}</div>
           </TimelineItem>
         ))}
+        <div ref={scrollEnd} />
       </TodoItems>
     </TodoContainer>
   );
