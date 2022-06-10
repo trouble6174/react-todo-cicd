@@ -34,6 +34,7 @@ function App() {
     <TodoContainer>
       <Todo placeholder="14天" />
       <Timeline prefix="tkl" placeholder="对我说" />
+      <Timeline prefix="t240" placeholder="从6月11号05:00开始的240小时记录" />
       <Todo prefix="tmp" placeholder="草稿" />
       <Todo prefix="ww" placeholder="Today" />
     </TodoContainer>
