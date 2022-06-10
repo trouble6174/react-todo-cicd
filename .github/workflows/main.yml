@@ -23,11 +23,11 @@ jobs:
             cache-dependency-path: ./todo/package-lock.json
         - run: npm install
         - name: build
-          run: npm build
+          run: npm run build
         - run: mkdir ~/.ssh
         - run: 'echo "$SSH_KEY" >> ~/.ssh/github-action'
         - run: chmod 400 ~/.ssh/github-action
         - run: echo -e "Host gauser\n\tUser gauser\n\tHostname 174.137.49.209\n\tIdentityFile ~/.ssh/github-action\n\tStrictHostKeyChecking No" >> ~/.ssh/config
         - run: rsync -e ssh public gauser:~/static
         - name: upload static file
-          run: rsync -e ssh build/app.js gauser:~/static/js/app.js
+          run: rsync -e ssh -a build/static/ gauser:~/static/
