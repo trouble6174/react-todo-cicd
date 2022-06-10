@@ -18,10 +18,14 @@ jobs:
             node-version: 16
             cache: 'npm'
         - run: npm install
-        - run: npm build
+        - name: build
+          working-directory: ./todo
+          run: npm build
         - run: mkdir ~/.ssh
         - run: 'echo "$SSH_KEY" >> ~/.ssh/github-action'
         - run: chmod 400 ~/.ssh/github-action
         - run: echo -e "Host gauser\n\tUser gauser\n\tHostname 174.137.49.209\n\tIdentityFile ~/.ssh/github-action\n\tStrictHostKeyChecking No" >> ~/.ssh/config
         - run: rsync -e ssh public gauser:~/static
-        - run: rsync -e ssh build/app.js gauser:~/static/js/app.js
+        - name: upload static file
+          working-directory: ./todo
+          run: rsync -e ssh build/app.js gauser:~/static/js/app.js
