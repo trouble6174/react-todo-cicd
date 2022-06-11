@@ -18,15 +18,15 @@ const TodoContainer = styled.div`
 `;
 
 const TodoItems = styled.div`
-  padding: 1rem;
+  padding: .8rem;
   max-width: 90%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
 `;
 
-const TodoInput = styled.div`
-  padding-top: 0.8rem;
+const TimelineInput = styled.div`
+  padding-bottom: 0.8rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -84,15 +84,6 @@ function Timeline({ prefix, placeholder }) {
 
   return (
     <TodoContainer>
-      <TodoInput>
-        <input
-          type="text"
-          placeholder={placeholder}
-          ref={content}
-          onKeyPress={handleKeyDown}
-        />
-        <button onClick={handleAddTodo}>+</button>
-      </TodoInput>
       <TodoItems>
         {todoList.map((v, i) => (
           <TimelineItem key={i}>
@@ -102,6 +93,15 @@ function Timeline({ prefix, placeholder }) {
         ))}
         <div ref={scrollEnd} />
       </TodoItems>
+      <TimelineInput>
+        <input
+          type="text"
+          placeholder={placeholder}
+          ref={content}
+          onKeyPress={handleKeyDown}
+        />
+        <button onClick={handleAddTodo}>+</button>
+      </TimelineInput>
     </TodoContainer>
   );
 }
